@@ -9,6 +9,7 @@ const HotelSchema = new mongoose.Schema({
     image: { type: String, default: "" },
     available: { type: Boolean, default: true },
     rating: { type: Number, default: 0 },
+    address: { type: String, required: true },
     reviews: { type: Array, default: [] },
     reservations: { type: Array, default: [] },
 })

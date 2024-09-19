@@ -4,6 +4,7 @@ import cors from 'cors';
 
 import userRoutes from './Routes/User.js';
 import authRoutes from './Routes/Auth.js';
+import hotelRoutes from './Routes/Hotel.js';
 
 import connectDB from './Database/config.js';
 
@@ -25,6 +26,7 @@ app.use(express.json());
 
 app.use('/api/users', userRoutes);
 app.use('/api/auth', authRoutes);
+app.use('/api/hotel', hotelRoutes)
 
 app.listen(port, () => {
     console.log(`Escuchando en http://localhost:${port}`);
