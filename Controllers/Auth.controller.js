@@ -22,19 +22,19 @@ authController.login = async (req = request, res = response) => {
         }
 
         const token = await generateJWT(usuario._id, usuario.name);
-        if(!token){
+        if (!token) {
             res.send("Error al generar el token").status(500);
             return
         }
-        res.send({ 
+
+        res.send({
             uid: usuario.id,
             name: usuario.name,
             lastname: usuario.lastname,
             username: usuario.username,
             email: usuario.email,
-            reservations: usuario.reservations,
             token
-         }).status(200);
+        }).status(200);
 
 
 
