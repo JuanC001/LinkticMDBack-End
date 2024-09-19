@@ -2,6 +2,9 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
 
+import userRoutes from './Routes/User.js';
+import authRoutes from './Routes/Auth.js';
+
 import connectDB from './Database/config.js';
 
 dotenv.config();
@@ -14,15 +17,14 @@ const corsOptions = {
     optionsSuccessStatus: 200,
 };
 
+connectDB();
+
 app.use(cors(corsOptions));
 app.use(express.static('public'));
 app.use(express.json());
 
-connectDB();
-
-app.get('/', (req, res) => {
-    res.send('Hello World!');
-});
+app.use('/api/users', userRoutes);
+app.use('/api/auth', authRoutes);
 
 app.listen(port, () => {
     console.log(`Escuchando en http://localhost:${port}`);

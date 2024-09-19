@@ -6,3 +6,5 @@ const router = Router();
 router.post("/login", authController.login);
 router.post("/register", authController.register);
 router.get("/renew", authController.renew);
+
+export default router;
