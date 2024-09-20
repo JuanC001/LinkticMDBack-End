@@ -18,7 +18,7 @@ Para conocer todos los end-points que tiene la API puedes entrar en el siguiente
 
 ## Diagrama de Arquitectura
 
-![Alt text](DiagramaDespliegue.png)
+![Alt text](DiagramadeDespliegue.png)
 
 ## Requisitos previos
 
