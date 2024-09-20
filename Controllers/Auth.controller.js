@@ -69,7 +69,9 @@ authController.register = async (req = request, res = response) => {
 authController.renew = (req = request, res = response) => {
     try {
 
-        const { uid, name, lastname, username, email } = req;
+        const { uid } = req;
+        const usuario = User.findById(uid);
+        const { name, lastname, username, email } = usuario;
         const token = generateJWT(uid, name);
 
         res.send({
