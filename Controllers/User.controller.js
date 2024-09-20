@@ -6,7 +6,7 @@ const userController = {}
 
 userController.createReservation = async (req = request, res = response) => {
 
-    const { uid, hotelId, date_start, date_end } = req.body
+    const { uid, hotelId, date_start, date_end, persons } = req.body
 
     try {
         const user = await User.findById(uid)
@@ -27,8 +27,10 @@ userController.createReservation = async (req = request, res = response) => {
             hotelName: hotel.name,
             hotelImage: hotel.image,
             hotelRating: hotel.rating,
+            hotelPrice: hotel.price,
             date_start,
-            date_end
+            date_end,
+            persons
         }
 
         user.reservations.push(reservation)
@@ -92,10 +94,11 @@ userController.deleteReservation = async (req = request, res = response) => {
 
 userController.getReservations = async (req = request, res = response) => {
 
-    const { uid } = req.body
+    const { id } = req.params
+    console.log("Obteniendo reservas", id)
 
     try {
-        const user = await User.findById(uid)
+        const user = await User.findById(id)
         if (!user) {
             res.status(404).send({ message: 'User not found' })
             return
