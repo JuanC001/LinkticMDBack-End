@@ -46,7 +46,7 @@ hotelController.updateHotel = async (req, res) => {
             res.status(404).send({ message: 'Hotel not found' })
             return
         }
-        res.send({ message: 'Hotel updated successfully' })
+        res.status(200).send({ message: 'Hotel updated successfully' })
     } catch (error) {
         res.status(500).send({ error: error.message })
     }
