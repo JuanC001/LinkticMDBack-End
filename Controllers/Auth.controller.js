@@ -60,12 +60,33 @@ authController.register = async (req = request, res = response) => {
 
     } catch (error) {
         console.error(error);
-        res.send("Hubo un error").status(500);
+        res.status(500).send("Hubo un error");
         return
     }
 
 }
 
-authController.renew = (req = request, res = response) => { }
+authController.renew = (req = request, res = response) => {
+    try {
+
+        const { uid, name, lastname, username, email } = req;
+        const token = generateJWT(uid, name);
+
+        res.send({
+            uid,
+            name,
+            lastname,
+            username,
+            email,
+            token
+        }).status(200);
+
+    } catch (error) {
+
+        console.error(error);
+        res.status(500).send("Hubo un error");
+        return
+    }
+}
 
 export default authController;
